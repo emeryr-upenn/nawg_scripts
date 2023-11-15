@@ -1,0 +1,11 @@
+SELECT DISTINCT ?item ?itemLabel ?otheridName
+WHERE
+{
+  BIND("The Galileo Project ID" as ?otheridName)
+  ?item wdt:P8941 ?otherid.
+  ?item wdt:P9756 ?schoe .
+  #?item wdt:P9943 ?hmml .
+  ?item wdt:P31 wd:Q5 .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+
+}
