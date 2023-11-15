@@ -1,6 +1,8 @@
-SELECT DISTINCT ?item ?itemLabel ?otheridName
+SELECT DISTINCT ?item ?itemLabel ?otheridName (CONCAT("https://sdbm.library.upenn.edu/names/", ?schoe) as ?shoe_url)
 WHERE
 {
+
+  # TODO: add dates for names (extract year)
   BIND("The Galileo Project ID" as ?otheridName)
   ?item wdt:P8941 ?otherid.
   ?item wdt:P9756 ?schoe .

@@ -7,9 +7,14 @@ require 'faraday'
 
 # Template for the SPARQL query
 template = ERB.new <<-EOF
-SELECT DISTINCT ?otherid ?otheridName ?item ?itemLabel
+SELECT DISTINCT 
+  ?item 
+  ?itemLabel 
+  ?otheridName 
+  (CONCAT("https://sdbm.library.upenn.edu/names/", ?schoe) as ?shoe_url)
 WHERE
 {
+  # TODO: add dates for names (extract year)
   BIND("<%= other_id_name %>" as ?otheridName)
   ?item wdt:<%= other_id %> ?otherid.
   ?item wdt:P9756 ?schoe .
